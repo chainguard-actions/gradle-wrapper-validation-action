@@ -1,6 +1,12 @@
 # gradle/wrapper-validation-action
 
-Hardened GitHub Action by [Chainguard](https://www.chainguard.dev).
+Hardened by [Chainguard](https://www.chainguard.dev) from the upstream action at [https://github.com/gradle/wrapper-validation-action](https://github.com/gradle/wrapper-validation-action).
+
+## Versions
+
+| Version | Tag | Upstream commit |
+|---------|-----|-----------------|
+| v3.5.0 | [`v3.5.0`](https://github.com/chainguard-actions/wrapper-validation-action/tree/v3.5.0) | — |
 
 ## Privacy
 
