@@ -1,5 +1,7 @@
 # gradle/wrapper-validation-action
 
+Gradle Wrapper Validation Action
+
 Hardened by [Chainguard](https://www.chainguard.dev) from the upstream action at [https://github.com/gradle/wrapper-validation-action](https://github.com/gradle/wrapper-validation-action).
 
 ## Versions
