@@ -2,5 +2,6 @@
   "owner": "gradle",
   "name": "wrapper-validation-action",
   "visibility": "internal",
-  "description": "Gradle Wrapper Validation Action"
+  "description": "Gradle Wrapper Validation Action",
+  "block_publish": false
 }

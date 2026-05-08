@@ -1,4 +1,6 @@
 {
-  "upstream": "gradle/wrapper-validation-action",
-  "version": "v3.5.0"
+  "owner": "gradle",
+  "repo": "wrapper-validation-action",
+  "version": "",
+  "url": "https://github.com/gradle/wrapper-validation-action"
 }
