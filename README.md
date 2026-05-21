@@ -8,7 +8,7 @@ Hardened by [Chainguard](https://www.chainguard.dev) from the upstream action at
 
 | Version | Tag | Upstream commit |
 |---------|-----|-----------------|
-| v3.5.0 | [`v3.5.0`](https://github.com/chainguard-actions/wrapper-validation-action/tree/v3.5.0) | — |
+| v3.5.0 | [`v3.5.0`](https://github.com/chainguard-actions/gradle--wrapper-validation-action/tree/v3.5.0) | — |
 
 ## Privacy
 
