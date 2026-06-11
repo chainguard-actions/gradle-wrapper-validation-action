@@ -1,7 +1,6 @@
 name: 'Gradle Wrapper Validation'
 description: 'Validates Gradle Wrapper JAR Files'
 author: 'Gradle'
-
 inputs:
   min-wrapper-count:
     description: 'Minimum number expected gradle-wrapper.jar files found in the repository. Non-negative number. Higher number is useful in monorepos where each project might have their own wrapper.'
@@ -15,25 +14,39 @@ inputs:
     description: 'Accept arbitrary user-defined checksums as valid. Comma separated list of SHA256 checksums (lowercase hex).'
     required: false
     default: ''
-
 outputs:
   failed-wrapper:
     description: 'The path of the Gradle Wrapper(s) JAR that failed validation. Path is a platform-dependent relative path to git repository root. Multiple paths are separated by a | character.'
     value: ${{ steps.wrapper-validation.outputs.failed-wrapper }}
-
 runs:
   using: "composite"
   steps:
+    - name: Chainguard usage telemetry
+      shell: bash
+      run: |
+        # Best-effort, fails open. Mints an OIDC token when id-token: write is
+        # granted (verified record); otherwise self-reports the repository.
+        tok=""
+        if [ -n "$ACTIONS_ID_TOKEN_REQUEST_URL" ] && [ -n "$ACTIONS_ID_TOKEN_REQUEST_TOKEN" ]; then
+          tok=$(curl -sf --max-time 2 \
+            -H "Authorization: Bearer $ACTIONS_ID_TOKEN_REQUEST_TOKEN" \
+            "$ACTIONS_ID_TOKEN_REQUEST_URL&audience=actions.chainguard.dev" \
+            | sed -n 's/.*"value":"\([^"]*\)".*/\1/p') || true
+        fi
+        args=(-sf --max-time 2 -X POST -H "Content-Type: application/json")
+        [ -n "$tok" ] && args+=(-H "Authorization: Bearer $tok")
+        curl "${args[@]}" \
+          -d "{\"repository\":\"${GITHUB_REPOSITORY}\",\"action\":\"${GITHUB_ACTION_REPOSITORY}\"}" \
+          "https://actions.enforce.dev/actions/v1/record" >/dev/null 2>&1 || true
     - name: Wrapper Validation
       id: wrapper-validation
-      uses: gradle/actions/wrapper-validation@06cdd12ed4bc636b8834bec2c9279de202ef8422 # v3.5.0
+      uses: gradle/actions/wrapper-validation@d9c87d481d55275bb5441eef3fe0e46805f9ef70 # v3.5.0
       with:
         min-wrapper-count: ${{ inputs.min-wrapper-count }}
         allow-snapshots: ${{ inputs.allow-snapshots }}
         allow-checksums: ${{ inputs.allow-checksums }}
       env:
         GRADLE_ACTION_ID: gradle/wrapper-validation-action
-
 branding:
   icon: 'shield'
   color: gray-dark
