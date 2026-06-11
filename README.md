@@ -1,6 +1,6 @@
 # gradle/wrapper-validation-action
 
-Gradle Wrapper Validation Action
+Validates Gradle Wrapper JAR Files
 
 Hardened by [Chainguard](https://www.chainguard.dev) from the upstream action at [https://github.com/gradle/wrapper-validation-action](https://github.com/gradle/wrapper-validation-action).
 
