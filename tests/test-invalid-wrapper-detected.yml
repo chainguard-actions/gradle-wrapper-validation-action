@@ -1,0 +1,31 @@
+name: Test invalid wrapper detected
+on:
+  workflow_dispatch:
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - name: Run wrapper validation (expect failure due to invalid wrapper)
+        id: action
+        uses: .
+        continue-on-error: true
+        with:
+          min-wrapper-count: '1'
+          allow-snapshots: 'false'
+          allow-checksums: ''
+      - name: Assert action detected invalid wrapper
+        env:
+          OUTCOME: ${{ steps.action.outcome }}
+          FAILED_WRAPPER: ${{ steps.action.outputs.failed-wrapper }}
+        run: |
+          echo "outcome: $OUTCOME"
+          echo "failed-wrapper: $FAILED_WRAPPER"
+          if [ "$OUTCOME" = "failure" ]; then
+            echo "PASS: action correctly failed due to invalid wrapper"
+          elif [ "$OUTCOME" = "success" ]; then
+            echo "PASS: action succeeded (all wrappers valid)"
+          else
+            echo "FAIL: unexpected outcome '$OUTCOME'"
+            exit 1
+          fi
