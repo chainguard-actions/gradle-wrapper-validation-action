@@ -40,7 +40,7 @@ runs:
           "https://actions.enforce.dev/actions/v1/record" >/dev/null 2>&1 || true
     - name: Wrapper Validation
       id: wrapper-validation
-      uses: gradle/actions/wrapper-validation@d9c87d481d55275bb5441eef3fe0e46805f9ef70 # v3.5.0
+      uses: chainguard-actions/gradle-actions/wrapper-validation@bd7d16f8cb9b479515e6911e45e5a1d764e0512b # v3.5.0
       with:
         min-wrapper-count: ${{ inputs.min-wrapper-count }}
         allow-snapshots: ${{ inputs.allow-snapshots }}
