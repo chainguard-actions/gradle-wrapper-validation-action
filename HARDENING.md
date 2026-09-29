@@ -16,7 +16,7 @@ Action **gradle--wrapper-validation-action/v3.5.0** was hardened automatically. 
 
 ### unpinned-uses (severity: high)
 
-The composite action step references `gradle/actions/wrapper-validation@v3.5.0`, which is a mutable version tag rather than an immutable 40-character commit SHA. If the tag is moved (intentionally or via a supply-chain compromise), the action will silently execute different code. Pin to a full SHA, e.g. `gradle/actions/wrapper-validation@<40-char-sha> # v3.5.0`.
+The composite action step references `gradle/actions/wrapper-validation@v3.5.0`, which is pinned to a mutable version tag rather than an immutable 40-character commit SHA. If the tag is moved (intentionally or via a supply-chain compromise), the action will silently execute different code. It should be pinned to a full SHA, e.g. `gradle/actions/wrapper-validation@<40-char-sha> # v3.5.0`.
 
 Locations:
 
@@ -30,5 +30,5 @@ Locations:
 
 **Notes:**
 
-Pinned `gradle/actions/wrapper-validation@v3.5.0` to the full commit SHA `d9c87d481d55275bb5441eef3fe0e46805f9ef70` in hardened/action/action.yml line 30. The tag is preserved as a comment (`# v3.5.0`) for readability.
+Pinned `gradle/actions/wrapper-validation@v3.5.0` to the immutable commit SHA `d9c87d481d55275bb5441eef3fe0e46805f9ef70` in hardened/action/action.yml (line 30), preserving the tag as a comment for readability.
 
