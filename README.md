@@ -6,9 +6,9 @@ Hardened by [Chainguard](https://www.chainguard.dev) from the upstream action at
 
 ## Versions
 
-| Version | Tag | Upstream commit |
-|---------|-----|-----------------|
-| v3.5.0 | [`v3.5.0`](https://github.com/chainguard-actions/gradle-wrapper-validation-action/tree/v3.5.0) | [`f9c9c57`](https://github.com/gradle/wrapper-validation-action/commit/f9c9c575b8b21b6485636a91ffecd10e558c62f6) |
+| Version | Tag | Upstream commit | Hardening report |
+|---------|-----|-----------------|------------------|
+| v3.5.0 | [`v3.5.0`](https://github.com/chainguard-actions/gradle-wrapper-validation-action/tree/v3.5.0) | [`f9c9c57`](https://github.com/gradle/wrapper-validation-action/commit/f9c9c575b8b21b6485636a91ffecd10e558c62f6) | [`HARDENING.md`](https://github.com/chainguard-actions/gradle-wrapper-validation-action/blob/v3.5.0/HARDENING.md) |
 
 ## Privacy
 
