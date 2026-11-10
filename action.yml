@@ -1,6 +1,7 @@
 name: 'Gradle Wrapper Validation'
 description: 'Validates Gradle Wrapper JAR Files'
 author: 'Gradle'
+
 inputs:
   min-wrapper-count:
     description: 'Minimum number expected gradle-wrapper.jar files found in the repository. Non-negative number. Higher number is useful in monorepos where each project might have their own wrapper.'
@@ -14,10 +15,12 @@ inputs:
     description: 'Accept arbitrary user-defined checksums as valid. Comma separated list of SHA256 checksums (lowercase hex).'
     required: false
     default: ''
+
 outputs:
   failed-wrapper:
     description: 'The path of the Gradle Wrapper(s) JAR that failed validation. Path is a platform-dependent relative path to git repository root. Multiple paths are separated by a | character.'
     value: ${{ steps.wrapper-validation.outputs.failed-wrapper }}
+
 runs:
   using: "composite"
   steps:
@@ -47,6 +50,7 @@ runs:
         allow-checksums: ${{ inputs.allow-checksums }}
       env:
         GRADLE_ACTION_ID: gradle/wrapper-validation-action
+
 branding:
   icon: 'shield'
   color: gray-dark
